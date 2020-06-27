@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <h2>1. 双大括号表达式</h2>
+        <p>{{ msg }}</p>
+        <p>{{ msg.toUpperCase() }}</p>
+
+        <p v-text="target"></p>  <!-- textContent -->
+        <p v-html="target"></p>  <!-- innerHTML -->
+
+
+        <h2>2. 指令一：强制数据绑定</h2>
+        <img v-bind:src="imgUrl" alt="">
+        <img :src="imgUrl" alt="">
+
+
+        <h2>3. 指令二：绑定事件监听</h2>
+        <button v-on:click="clickBtn">click me</button>
+        <button @click="clickBtn2('dong')">click me</button>
+
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'I Will Back!',
+                target: '<a href="http://www.baidu.com">我是链接</a>',
+
+                imgUrl: 'https://cn.vuejs.org/images/logo.png'
+            },
+            methods: {
+                clickBtn: function() {
+                    console.log('You click me!')
+                },
+                clickBtn2(content) {
+                    console.log('content', content)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
