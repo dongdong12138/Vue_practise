@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .a {
+            color: red;
+        }
+        .b {
+            color: green;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>1. class 绑定</h2>
+        <!-- 变量语法 -->
+        <p :class="a">收到了副驾驶的</p>
+        <button @click="changeColor">change color</button>
+
+        <!-- 对象语法 -->
+        <p :class="{a: isA, b: isB}">是劳动法简历上</p>
+        <button @click="change2">change2</button>
+
+        <!-- 数组语法 -->
+        <p :class="['b']">胜利大街烦死了</p>
+
+        <h2>2. style 绑定</h2>
+        <p :style="{fontSize: isFontSize, color: isColor}">拉萨的附近sad了</p>
+        <button @click="change3">change3</button>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: 'a',
+
+                isA: true,
+                isB: false,
+
+                isFontSize: '40px',
+                isColor: 'blue'
+            },
+            methods: {
+                changeColor() {
+                    this.a = 'b'
+                },
+
+                change2() {
+                    this.isA = false
+                    this.isB = true
+                },
+
+                change3() {
+                    this.isColor = 'orange'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

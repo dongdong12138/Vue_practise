@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-if="isSuccess">成功了</p>
+        <p v-else>失败了</p>
+
+        <p v-show="isSuccess">水帘洞</p>
+        <p v-show="!isSuccess">收到了法鸡啊</p>
+
+        <!-- 如果需要频繁切换，建议使用 v-show -->
+    </div>
+
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isSuccess: false
+            }
+        })
+    </script>
+</body>
+</html>

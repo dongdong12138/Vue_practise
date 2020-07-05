@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="click1">第一次点我</button>
+        <button @click="click2(123, $event)">第二次点我</button>
+    </div>
+
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                click1(e) {
+                    console.log('e:', e.target.innerText)
+                },
+
+                click2(number, e) {
+                    console.log('e:', e)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
