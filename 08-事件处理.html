@@ -8,8 +8,18 @@
 </head>
 <body>
     <div id="app">
+        <h2>1. 绑定监听</h2>
         <button @click="click1">第一次点我</button>
         <button @click="click2(123, $event)">第二次点我</button>
+
+        <h2>2. 事件修饰符</h2>
+        <div @click="clickRed" style="width: 200px; height: 200px; background: red;">
+            <div @click.stop="clickGreen" style="width: 100px; height: 100px; background: green;"></div>
+        </div>
+        <a @click.prevent="goBaidu" href="http://www.baidu.com">去百度</a>
+
+        <h2>3. 按键修饰符</h2>
+        <input @keyup.enter="keyUp" type="text">
     </div>
 
     <script type="text/javascript">
@@ -25,6 +35,22 @@
 
                 click2(number, e) {
                     console.log('e:', e)
+                },
+
+                clickRed() {
+                    console.log('red')
+                },
+
+                clickGreen() {
+                    console.log('green')
+                },
+
+                goBaidu() {
+                    console.log('去百度了')
+                },
+
+                keyUp(e) {
+                    console.log('e:', e.target.value)
                 }
             }
         })
