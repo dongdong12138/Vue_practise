@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="destroyVM">destroy vm</button>
+        <p v-show="showText">了速度快放假</p>
+    </div>
+
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                showText: true,
+                timer: null
+            },
+            // 1. 初始化阶段
+            beforeCreate() {
+                console.log('beforeCreate')
+            },
+            created() {
+                console.log('created')
+            },
+            beforeMount() {
+                console.log('beforeMount')
+            },
+            mounted() {
+                this.timer = setInterval(() => {
+                    console.log('mounted')
+                    this.showText = !this.showText
+                }, 1000)
+            },
+            
+            // 2. 挂载阶段（更新阶段）
+            beforeUpdate() {
+                console.log('beforeUpdate')
+            },
+            updated() {
+                console.log('updated')
+            },
+
+            // 3. 销毁阶段
+            beforeDestroy() {
+                console.log('beforeDestroy')
+                clearInterval(this.timer)
+            },
+            destroyed() {
+                console.log('destroyed')
+            },
+            methods: {
+                destroyVM() {
+                    this.$destroy()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
