@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单输入绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form action="xxx.php" @submit.prevent="submit">
+            <span>用户名：</span>
+            <input type="text" v-model="userName">
+            <br>
+
+            <span>密码：</span>
+            <input type="password" name="" id="" v-model="password">
+            <br>
+
+            <span>性别：</span>
+            <label for="male">男</label>
+            <input type="radio" name="" id="male" value="male" v-model="sex">
+            <label for="female">女：</label>
+            <input type="radio" name="" id="female" value="female" v-model="sex">
+            <br>
+
+            <span>爱好：</span>
+            <label for="basketball">篮球</label>
+            <input type="checkbox" name="" id="basketball" value="basketball" v-model="hobbies">
+            <label for="soccer">足球</label>
+            <input type="checkbox" name="" id="soccer" value="soccer" v-model="hobbies">
+            <label for="parkour">跑酷</label>
+            <input type="checkbox" name="" id="parkour" value="parkour" v-model="hobbies">
+            <br>
+
+            <span>城市：</span>
+            <select name="" id="" v-model="cityId">
+                <option value="">未选择</option>
+                <option :value="value.id" v-for="(value, index) in cities" :key="index">{{ value.name }}</option>
+            </select>
+            <br>
+
+            <span>介绍：</span>
+            <textarea name="" id="" cols="30" rows="10" v-model="introduce"></textarea>
+            <br>
+
+            <input type="submit" value="提交">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                userName: '',
+                password: '',
+                sex: '',
+                hobbies: [],
+                cities: [{id: 1, name: '北京'}, {id: 2, name: '上海'}, {id: 3, name: '深圳'}],
+                cityId: '',
+                introduce: ''
+            },
+            methods: {
+                submit() {
+                    const { userName, password, sex, hobbies, cityId, introduce } = this
+                    console.log('userName:', userName)
+                    console.log('password:', password)
+                    console.log('sex:', sex)
+                    console.log('hobbies:', hobbies)
+                    console.log('cityId', cityId)
+                    console.log('introduce', introduce)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
